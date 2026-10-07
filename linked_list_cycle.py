@@ -7,7 +7,7 @@ def hasCycle(head: ListNode) -> bool:
     lent = head
     rapid = head
 
-    while frapid is not None and rapid.next is not None:
+    while rapid is not None and rapid.next is not None:
         lent = lent.next
         rapid = rapid.next.next
         if lent is rapid:
