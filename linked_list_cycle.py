@@ -4,13 +4,13 @@ class ListNode:
         self.next = None
 
 def hasCycle(head: ListNode) -> bool:
-    slow = head
-    fast = head
+    lent = head
+    rapid = head
 
-    while fast is not None and fast.next is not None:
-        slow = slow.next
-        fast = fast.next.next
-        if slow is fast:
+    while frapid is not None and rapid.next is not None:
+        lent = lent.next
+        rapid = rapid.next.next
+        if lent is rapid:
             return True
 
     return False
