@@ -43,28 +43,17 @@ class MyHashMap:
           
     def put(self, key: int, value: int) -> None:
         j = self._hash_function(key)
-        if self._table[j] is None:             # posició lliure
-            self._table[j] = [key, value]
-            self._n += 1
-        elif self._table[j][0] == key:         # mateixa clau: actualitzem
-            self._table[j][1] = value
-        else:                                  # una altra clau: COL·LISIÓ
-            raise KeyError(f"COL·LISIÓ: {key} amb {self._table[j][0]}")
-
+        self._bucket_put(j, key, value)
         if self._n > len(self._table) // 2:
             self._resize(2 * len(self._table) - 1)
 
     def get(self, key: int) -> int:
         j = self._hash_function(key)
-        if self._table[j] is not None and self._table[j][0] == key:
-            return self._table[j][1]
-        return -1
+        return self._bucket_get(j, key)
 
     def remove(self, key: int) -> None:
         j = self._hash_function(key)
-        if self._table[j] is not None and self._table[j][0] == key:
-            self._table[j] = None
-            self._n -= 1
+        self._bucket_remove(j, key)
 
     def __len__(self):
         return self._n
