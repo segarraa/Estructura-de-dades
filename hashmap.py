@@ -23,7 +23,7 @@ class MyHashMap:
       self._n += 1
 
     def _bucket_get(self, j , key):
-      if self._table[j] is not Nnone:
+      if self._table[j] is not None:
         for parella in self._table[j]:
           if parella[0] == key:
             return parella[1]
